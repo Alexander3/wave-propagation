@@ -1,7 +1,8 @@
 import matplotlib
 from matplotlib.animation import FuncAnimation
+from matplotlib.colors import LinearSegmentedColormap, colorConverter
 
-from simulation import Simulation, min_presure, max_pressure, scale
+from simulation import Simulation, min_presure, max_pressure, scale, wall
 
 matplotlib.use('Qt5Agg')
 import matplotlib.pyplot as plt
@@ -11,6 +12,9 @@ figure = plt.figure()
 ca_plot = plt.imshow(simulation.pressure, cmap='seismic', interpolation='bilinear', vmin=min_presure,
                      vmax=max_pressure)
 plt.colorbar(ca_plot)
+transparent = colorConverter.to_rgba('black', alpha=0)
+wall_colormap = LinearSegmentedColormap.from_list('my_colormap', [transparent, 'green'], 2)
+plt.imshow(wall, cmap=wall_colormap,interpolation='bilinear', zorder=2)
 
 
 def animation_func(i):

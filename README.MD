@@ -11,5 +11,5 @@ pipenv install
 Running
 ``` bash
 pipenv shell
-python main.py
+python main.py 1 # use 1,2,3 for different walls
 ```
