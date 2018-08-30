@@ -6,10 +6,12 @@ based on _Komatsuzaki T., Iwata Y., Morishita S. (2012) Modelling of Incident So
 ## Development
 Use `pipenv` for managing dependencies https://github.com/pypa/pipenv#installation
 ``` bash
+sudo apt install ffmpeg
 pipenv install
 ```
 Running
 ``` bash
 pipenv shell
-python main.py 1 # use 1,2,3 for different walls
+python main.py 1 # use 1,2,3 for different walls, 
+python main.py 2 save # will save result as movie
 ```
