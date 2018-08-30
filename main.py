@@ -1,20 +1,15 @@
-from math import sin
-
 import matplotlib
+
+from simulation import Simulation, min_presure, max_pressure
 
 matplotlib.use('Qt5Agg')
 import matplotlib.pyplot as plt
 
-scale = 50  # 1m -> 50 cells
-size_x = 6 * scale
-size_y = 4 * scale
+simulation = Simulation()
 
-# Let's plot anything to see if it's working
-pressure = [[sin(x + y) for x in range(size_x)] for y in range(size_y)]
-min_presure = -1
-max_pressure = 1
+for i in range(50):
+    simulation.step()
 
-fig = plt.figure()
-ca_plot = plt.imshow(pressure, interpolation='bilinear', vmin=min_presure, vmax=max_pressure)
+ca_plot = plt.imshow(simulation.pressure, interpolation='bilinear', vmin=min_presure, vmax=max_pressure)
 plt.colorbar(ca_plot)
 plt.show()
